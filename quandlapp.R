@@ -27,13 +27,11 @@ ui <- dashboardPage(
       tabItem(tabName = "filings",
               selectInput("secselect", "Choose a Company", 
                           choices = c("Apple - Current Assets",
-                                      "Blackhawk Network - Current Assets",
                                       "Intermec, Inc - Current Assets"),
                           width = '100%'),
               dygraphOutput("cassets"),
               selectInput("longselect", "Choose a Company", 
                           choices = c("Apple - NonCurrent Assets",
-                                      "Blackhawk Network - NonCurrent Assets",
                                       "Intermec, Inc - NonCurrent Assets"),
                           width = '100%'),
               dygraphOutput("lassets")),
@@ -72,7 +70,6 @@ server <- function(input, output){
   secInput <- reactive({
     switch(input$secselect,
            "Apple - Current Assets" = Quandl("SEC/AAPL_ASSETSCURRENT_A"),
-           "Blackhawk Network - Current Assets" = Quandl("SEC/HAWK_ASSETSCURRENT_A"),
            "Intermec, Inc - Current Assets" = Quandl("SEC/IN_ASSETSCURRENT_A"))
   })
   
@@ -86,7 +83,6 @@ server <- function(input, output){
   noncurrentInput <- reactive({
     switch(input$longselect,
            "Apple - NonCurrent Assets" = Quandl("SEC/AAPL_OTHERASSETSNONCURRENT_A"),
-           "Blackhawk Network - NonCurrent Assets" = Quandl("SEC/HAWK_OTHERASSETSNONCURRENT_A"),
            "Intermec, Inc - NonCurrent Assets" = Quandl("SEC/IN_OTHERASSETSNONCURRENT_A"))
   })
   
