@@ -51,7 +51,7 @@ ui <- dashboardPage(
 
 server <- function(input, output){
   
-  Quandl.api_key("mmiYq3yxKc5JvTFa1Uzr")
+  Quandl.api_key("input your api key here")
   
   datasetInput <- reactive({
     switch(input$dataset,
